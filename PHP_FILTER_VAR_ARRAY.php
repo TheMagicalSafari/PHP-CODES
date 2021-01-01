@@ -8,7 +8,13 @@
 <body>
                     
                 <?php   
-                 
+                    /*
+                    this function will check an array of variables to serve two following tips:
+                        1.  Validation in addition to Sanitization and FLAGS
+                        2.  facilitate your job to achieve your goal a.s.a.p
+                    
+                    
+                    */
                     $info=array (
                         'name' => 'ERIC',
                         'Email' => 'eZipcoder@gmail.com',
@@ -35,7 +41,9 @@
                             )       
                         )
                     );
-
+                    # this line of code will print out the validated or sanitized data which have been passed through the the aforementioned proccess
+                    # if something goes wrong, it will never output the specific data
+                    #enjoy
                     $output = filter_var_array($info, $filter);
                     echo "Name: " . $output['name'] . "<br>";
                     echo "Email: " . $output['Email'] . "<br>";
