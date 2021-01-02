@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation in PHP</title>
+</head>
+<body>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+                    <label for="txt_id1">Name:</label>
+                    <input type="text" name="txt" id="txt_id1"> <br /> <br />
+                    <input name='sub' type="submit" value="Transfer">
+            
+            
+               </form>
+            <?php
+                // different types of validation in PHP Programming
+                
+
+                # number 1
+                # through Regular Expressions on a input of a text format
+                
+                
+                /*
+                if (isset($_POST['sub'])) {
+                    $name = $_POST['txt'];
+                    if(!preg_match('/^[a-zA-Z0-9]+$/', $name)) {
+                        echo "Please only whitespace n strings <br />";
+                    } 
+                    else {
+                            print("Done.") . nl2br("\n");
+                            echo "Name: " . $name;
+                    }
+                }
+                */
+
+
+                # number 2
+                # through Filter_var + built-in functions
+                /*
+                
+                if (isset($_POST['sub'])){ # means to show nothing til the user hits the Transfer Button
+                    $name=$_POST['txt'];
+                    if (!filter_var($name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW)) {
+                            echo "Wrong Characters were used - Try again";
+                    }
+                    else {
+                        echo "Done." . "<br />";
+                        echo "Name => " . $name;
+                    }
+                }
+
+                */
+
+
+
+                # number 3
+                # through Filter_var + Filter_Callback [ usage of Callback Functions ]
+                /* 
+
+                function cback($in) {
+                        $in = trim($in);
+                        $in = stripslashes($in);
+                        $in = htmlspecialchars($in);
+                        echo sprintf('Name : %s', $in);
+                }
+
+                if (isset($_POST['sub'])){
+
+                    $name = $_POST['txt'];
+                    filter_var($name, FILTER_CALLBACK, array("options" => 'cback'));
+                }
+
+                */
+
+                
+
+                # number 4
+                # through filter_input
+                /*
+
+                if(isset($_POST['sub'])) {
+
+                    if( !filter_input(INPUT_POST, 'txt', FILTER_SANITIZE_STRING ,FILTER_FLAG_STRIP_LOW) === FALSE) {
+                        echo "real name !" . "<br />";
+                        printf("Name : %s", $_POST['txt']);
+                    }
+                    else {
+                        echo "wrong characters";
+                    }
+                }
+
+                */
+
+                # number 5
+                # Through htmlspecialchars() <~ you can prevent hackers from penetrating your website [ sensitive DATA ] 
+            ?>
+</body>
+</html>
