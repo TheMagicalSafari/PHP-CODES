@@ -1,1 +1,63 @@
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PHP CALLBACK FUNCTIONS</title>
+    </head>
+    <body>
+            <h1>TUTOTRIAL BY Erfan Motallebi known as Eric on the internet</h1>
+            <?php
+            # Indirect Callback
+            # this means you use a function indirectly to influence the variables given to the callback function
+            function cback($str1)  {
+                    echo "Name: " . $str1[0] . "<br>";
+                    echo "Job: " . $str1[1] . "<br>";
+                    echo "Country: " . $str1[2] . "<br>";
+                    echo "Age: " . $str1[3] . "<br>";
+                    return 0;
+            }
+            $str1 = array('Erfan', 'programmer', 'Iran', '34');
+            cback($str1);
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            # Direct Callback
+            # this means you define your own callback function immediately after the specific built-in function
+            # we will utilize the array_map() to achieve this.
+            $i=0;
+            $str2 = ['Erfan', 'programmer', 'Iran', '34'];
+            $array_to_ret = array_map(function ($str2) {
+                        return strtoupper($str2);
+            }, $str2);
+            foreach ($array_to_ret as $txt) {
+                echo sprintf("Var : %s </br > ", $txt);
+            }
+
+            # the last method of using a callback function is to apply them as arguments passed to other functions in a script
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+
+
+            function Last_Call($str3) {
+                echo strtoupper($str3);
+            }
+            function Last_Call2($str3) {
+                echo ucwords($str3);
+            }
+                
+            function Strange($s1, $s2) {
+                echo $s2($s1);
+                echo "<br>";
+            }
+
+            Strange('hello world', 'Last_Call');
+            Strange('hello world', 'Last_Call2');
+            ?>
+            
+            # done here.
+    </body>
+</html>
