@@ -64,5 +64,37 @@ class Table { // the second with the same class shown above
 
 ?>
 
-# now you make another file to make a use of these classes with the same definition without facing any interruptions / errors
-# check it out in this folder named # namespace_using.php
+# in this file, we're going to utilize the file named # PHP_NAMESPACE.php
+/*
+now we're gonna declare the same classes withtout any problems or snags
+
+shown as follows:
+*/
+# Interpret this file though an IDE, to wit Sublime 3, VScode, ATOM so as to understand the concepts behind namespaces
+# Hint: you need the first file called # PHP_NAMEPSACE in this folder to give this action a meaning.
+
+# namespace.php
+<?php
+include('html.php');
+$table1 = new html1\Table();
+$table1->title="First HTML1";
+$table1->numRows=5;
+
+$table2 = new html2\Table();
+$table2->title="Second HTML2";
+$table2->numRows = "10";
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>namespace php</title>
+</head>
+<body>
+    <?php $table1->message()?>
+    <?php $table2->message()?>
+</body>
+</html>
